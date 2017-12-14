@@ -1,4 +1,4 @@
-provider {
+provider "aws" {
   region = "${var.aws_region}"
 }
 
@@ -12,6 +12,7 @@ resource "aws_launch_configuration" "web-lc" {
   instance_type        = "t2.micro"
   iam_instance_profile = "${var.iam_role}"
   user_data            = "${data.template_file.user_data.rendered}"
+  key_name             = "practice"
 
   root_block_device {
     volume_type = "gp2"
@@ -25,6 +26,7 @@ resource "aws_autoscaling_group" "web-asg" {
   min_size             = 1
   max_size             = 2
   desired_capacity     = 1
+  vpc_zone_identifier  = ["subnet-6719d048"]
 
   lifecycle {
     create_before_destroy = true
