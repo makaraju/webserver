@@ -21,7 +21,7 @@ resource "aws_launch_configuration" "web-lc" {
 
 resource "aws_autoscaling_group" "web-asg" {
   name                 = "web_asg"
-  launch_configuration = "${aws_launch_configuration.web_lc.name}"
+  launch_configuration = "${aws_launch_configuration.web-lc.name}"
   min_size             = 1
   max_size             = 2
   desired_capacity     = 1
