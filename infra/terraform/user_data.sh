@@ -1,4 +1,5 @@
 #!/bin/bash
+#forked from makaraju
 
 yum install wget git -y
 cd /tmp
